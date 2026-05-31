@@ -1,0 +1,6 @@
+{
+  "name": "First Choice Clinic",
+  "description": "Modern landing page for First Choice Hair Transplant and Cosmetics with price offers, treatment calculator, and booking form.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

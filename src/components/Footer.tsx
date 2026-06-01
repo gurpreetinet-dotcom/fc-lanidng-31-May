@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import logoPng from "../assets/images/logo.png";
 
 export function Footer() {
   return (
@@ -8,12 +9,10 @@ export function Footer() {
           
           <div className="lg:col-span-1">
             <div className="flex-shrink-0 flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-xl">
-                FC
-              </div>
+              <img src={logoPng} alt="First Choice" className="h-10 object-contain" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-white leading-tight">First Choice</span>
-                <span className="text-xs text-blue-400 font-semibold tracking-wider uppercase">Hair & Cosmetics</span>
+                <span className="text-xs text-emerald-400 font-semibold tracking-wider uppercase">Hair Transplant & Cosmetics</span>
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
@@ -21,13 +20,13 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               {/* Social placeholders */}
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer">
                 <span className="text-white font-bold text-sm">fb</span>
               </div>
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer">
                 <span className="text-white font-bold text-sm">ig</span>
               </div>
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer">
                 <span className="text-white font-bold text-sm">yt</span>
               </div>
             </div>
@@ -48,20 +47,20 @@ export function Footer() {
             <h4 className="text-white font-bold text-lg mb-6">Contact Information</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                <MapPin className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" />
                 <span className="text-gray-400 leading-relaxed">
                   #7, First Floor, Phase 1 Road, Main Market,<br/>
                   Urban Estate Dugri, Ludhiana, Punjab 141003
                 </span>
               </div>
               <div className="flex items-center gap-4">
-                <Phone className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                <Phone className="w-6 h-6 text-emerald-500 flex-shrink-0" />
                 <a href="tel:7087020202" className="text-gray-400 hover:text-white transition-colors text-lg font-medium">
                   7087 02 02 02
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <Mail className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                <Mail className="w-6 h-6 text-emerald-500 flex-shrink-0" />
                 <a href="mailto:care@fchtc.in" className="text-gray-400 hover:text-white transition-colors">
                   care@fchtc.in
                 </a>

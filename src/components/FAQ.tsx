@@ -20,7 +20,7 @@ export function FAQ() {
       a: "With advanced FUE (Follicular Unit Extraction) techniques, we extract follicles individually using a micro-punch. This leaves tiny dot-like scars that are virtually undetectable once your hair grows out, even if you wear your hair very short."
     },
     {
-      q: "Can I avail EMI options for the ₹29,999/- offer?",
+      q: "Can I avail EMI options for the ₹34,999/- offer?",
       a: "Absolutely! We offer flexible and easy EMI options to make your hair restoration journey perfectly affordable. You can discuss the payment plans during your free consultation."
     }
   ];
@@ -50,7 +50,7 @@ export function FAQ() {
                 className="w-full px-6 py-5 text-left flex justify-between items-center bg-white"
               >
                 <span className="font-bold text-gray-900 pr-8">{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-blue-600 flex-shrink-0 transition-transform duration-300 ${openIdx === idx ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-5 h-5 text-emerald-600 flex-shrink-0 transition-transform duration-300 ${openIdx === idx ? "rotate-180" : ""}`} />
               </button>
               
               <div 

@@ -15,6 +15,7 @@ const googleReviewsData = [
   {
     name: "nagesh boyina",
     date: "6 months ago",
+    images: ["/before.jpg", "/result.jpg"],
     content: "I came from Andra Pradesh, our many friends already undergone of hair transplantation from First choice Hair Transplant Ludhiana and they got very good results. We are fully satisfied with all the team of clinic."
   },
   {
@@ -210,6 +211,19 @@ export function GoogleReviews() {
                     <p className="text-[15px] text-gray-700 leading-snug flex-grow">
                       {review.content}
                     </p>
+                    {review.images && review.images.length > 0 && (
+                      <div className="mt-4 flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
+                        {review.images.map((img, imgIdx) => (
+                          <div key={imgIdx} className="rounded-xl overflow-hidden relative border border-gray-100 bg-gray-50 h-24 w-24 flex-shrink-0">
+                            <img 
+                              src={img} 
+                              alt={`Review photo by ${review.name}`} 
+                              className="w-full h-full object-cover object-top"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -233,6 +247,16 @@ export function GoogleReviews() {
           </button>
         </div>
       </div>
+      
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}} />
     </section>
   );
 }

@@ -11,6 +11,7 @@ import { Features } from './components/Features';
   import { BeforeAfterSlider } from './components/BeforeAfterSlider';
   import { GoogleReviews } from './components/GoogleReviews';
   import { VideoTestimonials } from './components/VideoTestimonials';
+  import { InstagramReels } from './components/InstagramReels';
   import { FAQ } from './components/FAQ';
   import { Footer } from './components/Footer';
   import { FloatingContact } from './components/FloatingContact';
@@ -26,6 +27,7 @@ import { Features } from './components/Features';
           <Features />
           <Process />
           <VideoTestimonials />
+          <InstagramReels />
           <GoogleReviews />
           <FAQ />
         </main>

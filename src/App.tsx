@@ -7,29 +7,29 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Stats } from './components/Stats';
 import { Features } from './components/Features';
-import { Process } from './components/Process';
-import { BeforeAfterSlider } from './components/BeforeAfterSlider';
-import { Calculator } from './components/Calculator';
-import { GoogleReviews } from './components/GoogleReviews';
-import { FAQ } from './components/FAQ';
-import { Footer } from './components/Footer';
-import { FloatingContact } from './components/FloatingContact';
-
-export default function App() {
-  return (
-    <div className="min-h-screen bg-white font-sans scroll-smooth selection:bg-emerald-200">
-      <Navbar />
-      <main>
-        <Hero />
-        <Stats />
-        <BeforeAfterSlider />
-        <Features />
-        <Process />
-        <Calculator />
-        <GoogleReviews />
-        <FAQ />
-      </main>
-      <Footer />
+  import { Process } from './components/Process';
+  import { BeforeAfterSlider } from './components/BeforeAfterSlider';
+  import { GoogleReviews } from './components/GoogleReviews';
+  import { VideoTestimonials } from './components/VideoTestimonials';
+  import { FAQ } from './components/FAQ';
+  import { Footer } from './components/Footer';
+  import { FloatingContact } from './components/FloatingContact';
+  
+  export default function App() {
+    return (
+      <div className="min-h-screen bg-white font-sans scroll-smooth selection:bg-emerald-200">
+        <Navbar />
+        <main>
+          <Hero />
+          <Stats />
+          <BeforeAfterSlider />
+          <Features />
+          <Process />
+          <VideoTestimonials />
+          <GoogleReviews />
+          <FAQ />
+        </main>
+        <Footer />
       <FloatingContact />
       
       {/* Floating CTA for mobile */}

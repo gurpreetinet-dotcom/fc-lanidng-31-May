@@ -1,6 +1,39 @@
-import { Check, Star, IndianRupee, ArrowRight } from "lucide-react";
+import { useState } from 'react';
+import { Check, Star, IndianRupee, ArrowRight, Loader2 } from "lucide-react";
 
 export function Hero() {
+  const [formData, setFormData] = useState({ name: '', phone: '', city: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('phone', formData.phone);
+      data.append('city', formData.city);
+
+      await fetch('https://script.google.com/macros/s/AKfycbwNh_-Rwxqi7r2qrJpuVkxxwLpJ8iAJBMxXCSZdk37dCmA3MkcgplmJcKP7_GJioTwlSg/exec?gid=0', {
+        method: 'POST',
+        body: data,
+        mode: 'no-cors'
+      });
+
+      setSubmitStatus('success');
+      setFormData({ name: '', phone: '', city: '' });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative bg-gradient-to-br from-emerald-50 via-white to-emerald-50 pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -110,21 +143,68 @@ export function Hero() {
                 <p className="text-sm text-gray-500">Our hair expert will contact you shortly</p>
               </div>
               
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                {submitStatus === 'success' ? (
+                  <div className="bg-emerald-50 text-emerald-700 p-4 rounded-xl border border-emerald-100 text-sm text-center">
+                    Thank you! We have received your details. Our team will contact you shortly.
+                  </div>
+                ) : null}
+                {submitStatus === 'error' ? (
+                  <div className="bg-red-50 text-red-700 p-4 rounded-xl border border-red-100 text-sm text-center">
+                    Something went wrong. Please try again or call us directly.
+                  </div>
+                ) : null}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                  <input type="text" id="name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="Enter your name" />
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:bg-gray-50" 
+                    placeholder="Enter your name"
+                    required
+                    disabled={isSubmitting}
+                  />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                  <input type="tel" id="phone" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="Enter mobile number" />
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:bg-gray-50" 
+                    placeholder="Enter mobile number" 
+                    required
+                    disabled={isSubmitting}
+                  />
                 </div>
                 <div>
                   <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">City</label>
-                  <input type="text" id="city" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="E.g. Ludhiana" />
+                  <input 
+                    type="text" 
+                    id="city" 
+                    value={formData.city}
+                    onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:bg-gray-50" 
+                    placeholder="E.g. Ludhiana" 
+                    disabled={isSubmitting}
+                  />
                 </div>
-                <button type="button" className="w-full py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-semibold text-lg transition-colors shadow-md">
-                  Request Consultation
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-semibold text-lg transition-colors shadow-md flex items-center justify-center disabled:opacity-70"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    'Request Consultation'
+                  )}
                 </button>
                 <p className="text-xs text-center text-gray-400 mt-4 leading-relaxed">
                   By submitting this form, you agree to our terms and conditions. 100% confidential. No spam. We respect your privacy.

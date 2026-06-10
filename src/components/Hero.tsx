@@ -94,7 +94,7 @@ export function Hero() {
               {/* Before Polaroid */}
               <div className="bg-white p-2 pb-7 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-6 border border-gray-100 w-36 sm:w-40 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
-                  <img src="/before.jpg" alt="Before" className="w-full h-full object-cover object-top" />
+                  <img src="/hero-before.jpg" alt="Before" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-[13px] xl:text-[15px]">Before</div>
               </div>
@@ -142,7 +142,7 @@ export function Hero() {
               {/* After Polaroid */}
               <div className="bg-white p-2 pb-7 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-6 border border-gray-100 w-36 sm:w-40 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 mt-6 lg:mt-0 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
-                  <img src="/result.jpg" alt="After" className="w-full h-full object-cover object-top" />
+                  <img src="/hero-after.jpg" alt="After" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-bold italic text-emerald-600 text-[13px] xl:text-[15px]">After</div>
               </div>

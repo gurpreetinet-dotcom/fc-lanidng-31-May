@@ -19,15 +19,47 @@ export function Hero() {
       data.append('phone', formData.phone);
       data.append('city', formData.city);
 
-      await fetch('https://script.google.com/macros/s/AKfycbwNh_-Rwxqi7r2qrJpuVkxxwLpJ8iAJBMxXCSZdk37dCmA3MkcgplmJcKP7_GJioTwlSg/exec?gid=0', {
-        method: 'POST',
-        body: data,
-        mode: 'no-cors'
-      });
+      let hasError = false;
 
-      setSubmitStatus('success');
-      setFormData({ name: '', phone: '', city: '' });
+      // 1. Submit to Google Sheets (Webhook)
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbwNh_-Rwxqi7r2qrJpuVkxxwLpJ8iAJBMxXCSZdk37dCmA3MkcgplmJcKP7_GJioTwlSg/exec?gid=0', {
+          method: 'POST',
+          body: data,
+          mode: 'no-cors'
+        });
+      } catch (error) {
+        console.error('Google Sheets submission error:', error);
+        hasError = true;
+      }
+
+      // 2. Submit to Email via FormSubmit
+      try {
+        await fetch('https://formsubmit.co/ajax/gurpreet.inet@gmail.com', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: "New Free Consultation Booking",
+            Name: formData.name,
+            Phone: formData.phone,
+            City: formData.city || "Not provided"
+          })
+        });
+      } catch (error) {
+        console.error('FormSubmit email error:', error);
+      }
+
+      if (hasError) {
+        setSubmitStatus('error');
+      } else {
+        setSubmitStatus('success');
+        setFormData({ name: '', phone: '', city: '' });
+      }
     } catch (error) {
+      console.error('General submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -58,62 +90,98 @@ export function Hero() {
             </p>
 
             {/* Before / After Polaroids */}
-            <div className="flex lg:absolute lg:right-[-60px] xl:right-[-140px] lg:top-4 xl:top-0 items-center justify-start lg:justify-center mb-10 lg:mb-0 z-20 pointer-events-none">
+            <div className="flex lg:block lg:absolute lg:left-[70%] xl:left-[80%] lg:-top-6 xl:-top-10 items-center justify-start mb-10 lg:mb-0 z-20 pointer-events-none lg:w-[320px] xl:w-[450px] lg:h-[380px] xl:h-[480px]">
               {/* Before Polaroid */}
-              <div className="bg-white p-2 pb-7 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-6 border border-gray-100 w-28 sm:w-32 xl:w-36 relative z-10 pointer-events-auto transition-transform hover:rotate-0 hover:z-30">
+              <div className="bg-white p-2 pb-7 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-6 border border-gray-100 w-36 sm:w-40 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
                   <img src="/before.jpg" alt="Before" className="w-full h-full object-cover object-top" />
                 </div>
-                <div className="absolute bottom-1.5 left-0 right-0 text-center font-medium italic text-gray-500 text-[13px]">Before</div>
+                <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-[13px] xl:text-[15px]">Before</div>
               </div>
               
               {/* Dotted Curved Arrow SVG */}
-              <div className="w-16 sm:w-20 xl:w-24 -mx-3 z-20 mt-6 lg:mt-12 opacity-80">
+              <div className="w-16 sm:w-20 lg:hidden -mx-3 z-20 mt-6 lg:mt-0 opacity-80">
+                <style>
+                  {`
+                    @keyframes drawDash {
+                      to {
+                        stroke-dashoffset: -20;
+                      }
+                    }
+                    .animate-curved-dash {
+                      animation: drawDash 1s linear infinite;
+                    }
+                  `}
+                </style>
                 <svg viewBox="0 0 100 50" fill="none" className="w-full h-auto text-emerald-500 drop-shadow-sm overflow-visible">
-                  <path d="M10,40 Q50,-15 90,30" stroke="currentColor" strokeWidth="2.5" strokeDasharray="5,5" fill="none" strokeLinecap="round" />
+                  <path d="M10,40 Q50,-15 90,30" className="animate-curved-dash" stroke="currentColor" strokeWidth="2.5" strokeDasharray="5,5" fill="none" strokeLinecap="round" />
                   <path d="M78,18 L94,32 L78,42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
               </div>
 
+              {/* Desktop Arrow */}
+              <div className="hidden lg:block w-32 xl:w-40 z-20 opacity-80 lg:absolute lg:top-[160px] lg:-left-[10px] xl:top-[190px] xl:left-[0px]">
+                <style>
+                  {`
+                    @keyframes drawDash {
+                      to {
+                        stroke-dashoffset: -20;
+                      }
+                    }
+                    .animate-curved-dash {
+                      animation: drawDash 1s linear infinite;
+                    }
+                  `}
+                </style>
+                <svg viewBox="0 0 100 100" fill="none" className="w-full h-auto text-emerald-500 drop-shadow-sm overflow-visible">
+                  <path d="M90,20 C90,60 50,85 20,85" className="animate-curved-dash" stroke="currentColor" strokeWidth="2.5" strokeDasharray="5,5" fill="none" strokeLinecap="round" />
+                  <path d="M30,75 L20,85 L30,95" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
+              </div>
+
               {/* After Polaroid */}
-              <div className="bg-white p-2 pb-7 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-6 border border-gray-100 w-28 sm:w-32 xl:w-36 relative z-10 mt-6 xl:mt-12 pointer-events-auto transition-transform hover:rotate-0 hover:z-30">
+              <div className="bg-white p-2 pb-7 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-6 border border-gray-100 w-36 sm:w-40 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 mt-6 lg:mt-0 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
                   <img src="/result.jpg" alt="After" className="w-full h-full object-cover object-top" />
                 </div>
-                <div className="absolute bottom-1.5 left-0 right-0 text-center font-bold italic text-emerald-600 text-[13px]">After</div>
+                <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-bold italic text-emerald-600 text-[13px] xl:text-[15px]">After</div>
               </div>
             </div>
             
-            <div className="flex flex-wrap gap-3 mb-10">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-yellow-200 bg-yellow-50 text-yellow-800 text-sm font-semibold shadow-sm">
-                <div className="flex gap-0.5">
-                  <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+            <div className="flex flex-col gap-3 mb-10">
+              <div className="flex flex-wrap gap-3">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-yellow-200 bg-yellow-50 text-yellow-800 text-sm font-semibold shadow-sm">
+                  <div className="flex gap-0.5">
+                    <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                    <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                    <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                    <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                    <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                  </div>
+                  <span>4.9/5 Rated</span>
                 </div>
-                <span>4.9/5 Rated</span>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
+                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                  <span>100% Doctor-Led</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
+                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                  <span>2000+ Transplants Done</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
+                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                  <span>Painless Surgery</span>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
-                <span>100% Doctor-Led</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
-                <span>1000+ Transplants Done</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
-                <span>Painless Surgery</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
-                <span>Natural Hairline</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
-                <span>Easy EMI</span>
+              <div className="flex flex-wrap gap-3">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
+                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                  <span>Natural Hairline</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
+                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                  <span>Easy EMI</span>
+                </div>
               </div>
             </div>
 

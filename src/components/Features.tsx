@@ -38,7 +38,7 @@ export function Features() {
     <section className="py-24 bg-white" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             Why Choose First Choice?
           </h2>
           <p className="text-gray-600 text-lg">
@@ -48,14 +48,16 @@ export function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
-            <div key={idx} className="p-8 rounded-2xl border border-gray-100 hover:border-emerald-100 bg-gray-50/50 hover:bg-white hover:shadow-xl hover:shadow-emerald-900/5 transition-all group">
-              <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div key={idx} className="p-6 md:p-8 rounded-2xl border border-gray-100 hover:border-emerald-100 bg-gray-50/50 hover:bg-white hover:shadow-xl hover:shadow-emerald-900/5 transition-all group flex items-start gap-4">
+              <div className="w-14 h-14 shrink-0 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed text-sm">
-                {feature.description}
-              </p>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

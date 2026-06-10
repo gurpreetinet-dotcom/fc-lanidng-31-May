@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calculator as CalcIcon } from "lucide-react";
+import { Calculator as CalcIcon, Loader2 } from "lucide-react";
 
 const NorwoodFace = ({ level, active }: { level: number; active: boolean }) => {
   const getHairPath = (l: number) => {
@@ -64,6 +64,10 @@ const NorwoodFace = ({ level, active }: { level: number; active: boolean }) => {
 
 export function Calculator() {
   const [level, setLevel] = useState<number>(3);
+  const [calcName, setCalcName] = useState('');
+  const [calcPhone, setCalcPhone] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
   // Approximate graft counts based on Norwood scales
   const graftEstimates: Record<number, string> = {
@@ -74,6 +78,68 @@ export function Calculator() {
     5: "3,500 - 4,500 Grafts",
     6: "4,500 - 6,000 Grafts",
     7: "5,000+ Grafts / Body Hair Transplant"
+  };
+
+  const handleCalcSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!calcName || !calcPhone) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const data = new FormData();
+      data.append('name', calcName);
+      data.append('phone', calcPhone);
+      data.append('city', `Norwood Level ${level} (${graftEstimates[level]})`);
+
+      let hasError = false;
+
+      // 1. Submit to Google Sheets (Webhook)
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbwNh_-Rwxqi7r2qrJpuVkxxwLpJ8iAJBMxXCSZdk37dCmA3MkcgplmJcKP7_GJioTwlSg/exec?gid=0', {
+          method: 'POST',
+          body: data,
+          mode: 'no-cors'
+        });
+      } catch (error) {
+        console.error('Google Sheets submission error:', error);
+        hasError = true;
+      }
+
+      // 2. Submit to Email via FormSubmit
+      try {
+        await fetch('https://formsubmit.co/ajax/gurpreet.inet@gmail.com', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: "New Graft Calculator Submission",
+            Name: calcName,
+            Phone: calcPhone,
+            NorwoodLevel: `Level ${level}`,
+            EstimatedGrafts: graftEstimates[level]
+          })
+        });
+      } catch (error) {
+        console.error('FormSubmit email error:', error);
+      }
+
+      if (hasError) {
+        setSubmitStatus('error');
+      } else {
+        setSubmitStatus('success');
+        setCalcName('');
+        setCalcPhone('');
+      }
+    } catch (error) {
+      console.error('General Calculator submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -116,20 +182,60 @@ export function Calculator() {
 
             <div className="max-w-md mx-auto text-left bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm mt-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Step 2 - Submit Details for Quote</h3>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleCalcSubmit}>
+                {submitStatus === 'success' ? (
+                  <div className="bg-emerald-50 text-emerald-700 p-4 rounded-xl border border-emerald-100 text-sm text-center">
+                    Estimate Ready & Booked! We have received your details. Our team will contact you shortly with your free clinical consultation options.
+                  </div>
+                ) : null}
+                {submitStatus === 'error' ? (
+                  <div className="bg-red-50 text-red-700 p-4 rounded-xl border border-red-100 text-sm text-center">
+                    Something went wrong. Please try again or message us directly.
+                  </div>
+                ) : null}
                 <div>
                   <label htmlFor="calc-name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                  <input type="text" id="calc-name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="Enter your name" />
+                  <input 
+                    type="text" 
+                    id="calc-name" 
+                    value={calcName}
+                    onChange={(e) => setCalcName(e.target.value)}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:bg-gray-50" 
+                    placeholder="Enter your name" 
+                  />
                 </div>
                 <div>
                   <label htmlFor="calc-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                  <input type="tel" id="calc-phone" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all" placeholder="Enter mobile number" />
+                  <input 
+                    type="tel" 
+                    id="calc-phone" 
+                    value={calcPhone}
+                    onChange={(e) => setCalcPhone(e.target.value)}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:bg-gray-50" 
+                    placeholder="Enter mobile number" 
+                  />
                 </div>
-                <button type="button" className="w-full py-4 mt-2 rounded-xl bg-gray-900 text-white font-semibold text-lg hover:bg-gray-800 transition-colors shadow-md">
-                  Get Estimate & Book Free Consultation
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full py-4 mt-2 rounded-xl bg-gray-900 text-white font-semibold text-lg hover:bg-gray-800 transition-colors shadow-md flex items-center justify-center disabled:opacity-75"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Estimating...
+                    </>
+                  ) : (
+                    "Get Estimate & Book Free Consultation"
+                  )}
                 </button>
               </form>
             </div>
+          </div>
           </div>
         </div>
       </div>

@@ -42,11 +42,10 @@ export function BeforeAfterSlider() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Real Transformations
+            Life-Changing Hair Transformations
           </h2>
           <p className="text-gray-600 text-lg">
-            See the dramatic before and after results from our patients. 
-            (Images formatted perfectly for both mobile and desktop screens).
+            See real before-and-after results from patients who restored their hair and renewed their confidence. ⭐⭐⭐⭐⭐
           </p>
         </div>
         

@@ -18,7 +18,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#services" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Services</a>
               <a href="#calculator" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Graft Calculator</a>
-              <a href="#success-stories" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Results</a>
+              <a href="#results" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Results</a>
               <a href="#contact" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Contact</a>
             </div>
 

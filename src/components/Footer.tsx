@@ -9,7 +9,7 @@ export function Footer() {
           
           <div className="lg:col-span-1">
             <div className="flex-shrink-0 flex items-center gap-2 mb-6">
-              <img src={logoPng} alt="First Choice" className="h-10 object-contain" />
+              <img src={logoPng} alt="First Choice" className="h-10 object-contain brightness-0 invert" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-white leading-tight">First Choice</span>
                 <span className="text-xs text-emerald-400 font-semibold tracking-wider uppercase">Hair Transplant & Cosmetics</span>
@@ -18,29 +18,23 @@ export function Footer() {
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Dedicated to giving you a head full of hair and a renewed sense of confidence. Combining artistry with medical precision.
             </p>
-            <div className="flex space-x-4">
-              {/* Social placeholders */}
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer">
-                <span className="text-white font-bold text-sm">fb</span>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer">
-                <span className="text-white font-bold text-sm">ig</span>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer">
-                <span className="text-white font-bold text-sm">yt</span>
-              </div>
-            </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold text-lg mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Treatments & Services</a></li>
-              <li><a href="#calculator" className="text-gray-400 hover:text-white transition-colors">Graft Needs Calculator</a></li>
-              <li><a href="#success-stories" className="text-gray-400 hover:text-white transition-colors">Patient Gallery</a></li>
-              <li><a href="#book" className="text-gray-400 hover:text-white transition-colors">Book an Appointment</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-            </ul>
+            <div className="grid grid-cols-1 gap-2">
+              <a href="#home" className="text-gray-400 hover:text-white transition-colors text-sm">Home</a>
+              <a href="#results" className="text-gray-400 hover:text-white transition-colors text-sm">Patient Gallery</a>
+              <a href="#services" className="text-gray-400 hover:text-white transition-colors text-sm">Why Choose Us</a>
+              <a href="#video-testimonials" className="text-gray-400 hover:text-white transition-colors text-sm">Video Testimonials</a>
+              <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
+              <a href="#our-services" className="text-gray-400 hover:text-white transition-colors text-sm">Treatments & Services</a>
+              <a href="#instagram-reels" className="text-gray-400 hover:text-white transition-colors text-sm">Instagram Reels</a>
+              <a href="#reviews" className="text-gray-400 hover:text-white transition-colors text-sm">Patient Reviews</a>
+              <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+              <a href="#location" className="text-gray-400 hover:text-white transition-colors text-sm">Clinic Location</a>
+              <a href="#book" className="text-gray-400 hover:text-white transition-colors text-sm">Book an Appointment</a>
+            </div>
           </div>
 
           <div className="lg:col-span-2">
@@ -49,7 +43,7 @@ export function Footer() {
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" />
                 <span className="text-gray-400 leading-relaxed">
-                  #7, First Floor, Phase 1 Road, Main Market,<br/>
+                  #7, First Floor, Phase 1 Market,<br/>
                   Urban Estate Dugri, Ludhiana, Punjab 141003
                 </span>
               </div>
@@ -72,9 +66,6 @@ export function Footer() {
 
         <div className="border-t border-gray-900 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} First Choice Hair Transplant & Cosmetics. All rights reserved.</p>
-          <p>
-            Made with dedication for our patients.
-          </p>
         </div>
       </div>
     </footer>

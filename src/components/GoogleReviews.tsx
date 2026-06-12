@@ -72,7 +72,7 @@ export function GoogleReviews() {
   useEffect(() => {
     const timer = setInterval(() => {
       next();
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [next]);
 

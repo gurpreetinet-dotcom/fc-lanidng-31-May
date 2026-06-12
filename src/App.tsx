@@ -7,12 +7,14 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Stats } from './components/Stats';
 import { Features } from './components/Features';
+import { Services } from './components/Services';
 import { Process } from './components/Process';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import { GoogleReviews } from './components/GoogleReviews';
 import { VideoTestimonials } from './components/VideoTestimonials';
 import { InstagramReels } from './components/InstagramReels';
 import { FAQ } from './components/FAQ';
+import { Location } from './components/Location';
 import { Footer } from './components/Footer';
 import { FloatingContact } from './components/FloatingContact';
 import { PromoPopup } from './components/PromoPopup';
@@ -26,11 +28,13 @@ export default function App() {
         <Stats />
         <BeforeAfterSlider />
         <Features />
-        <Process />
         <VideoTestimonials />
+        <Process />
+        <Services />
         <InstagramReels />
         <GoogleReviews />
         <FAQ />
+        <Location />
       </main>
       <Footer />
       <FloatingContact />

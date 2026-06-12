@@ -134,68 +134,66 @@ export function PromoPopup() {
         </button>
 
         <div className="grid md:grid-cols-12">
-          {/* Left Side: Highlight banner & value props */}
-          <div className="md:col-span-5 bg-gradient-to-br from-gray-950 via-emerald-950 to-gray-950 text-white p-6 md:p-8 flex flex-col justify-between relative">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-extrabold text-[10px] uppercase tracking-wider mb-4 border border-emerald-500/10">
-                <Sparkles className="w-3 h-3 text-emerald-400" />
+          {/* Left Side: Image & Highlight banner */}
+          <div className="md:col-span-5 relative bg-emerald-900 min-h-[300px] md:min-h-full flex flex-col justify-end p-6 md:p-8 overflow-hidden">
+            {/* Promo Image */}
+            <img 
+              src="/popup-promo.jpg" 
+              alt="Hair Transplant Offer" 
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback to a placeholder if the user hasn't uploaded popup-promo.jpg yet
+                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1620330101683-1994645065a7?auto=format&fit=crop&q=80&w=600";
+              }}
+            />
+            {/* Dark gradient overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-900/40 to-transparent"></div>
+            
+            <div className="relative z-10 mt-auto">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/90 text-white font-extrabold text-[10px] uppercase tracking-wider mb-3">
+                <Sparkles className="w-3 h-3 text-white" />
                 Limited Slot Left
               </div>
 
-              <h3 className="text-xl md:text-2xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                Special <br />
-                Celebration Deal
+              <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2 leading-tight drop-shadow-md">
+                ₹34,999
+                <span className="block text-lg font-medium text-emerald-300 mt-1">Special Package</span>
               </h3>
-              <p className="text-xs text-gray-300 leading-relaxed max-w-sm mb-6">
-                Claim our exclusive hair restore package for the lowest price of the season.
-              </p>
-
-              <div className="space-y-3">
-                <div className="flex items-start gap-2 text-xs text-gray-300">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Up to 2,500 FUE Grafts Included</span>
+              
+              <div className="space-y-2 mt-4 text-xs text-gray-200">
+                <div className="flex items-center gap-2 drop-shadow">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Up to 2,500 FUE Grafts</span>
                 </div>
-                <div className="flex items-start gap-2 text-xs text-gray-300">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>2 Free PRP Hair Growth Sessions</span>
-                </div>
-                <div className="flex items-start gap-2 text-xs text-gray-300">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Free Clinical Post-Op Care Kit</span>
-                </div>
-                <div className="flex items-start gap-2 text-xs text-gray-300">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Interest-Free EMI options</span>
+                <div className="flex items-center gap-2 drop-shadow">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>2 Free PRP Sessions</span>
                 </div>
               </div>
-            </div>
 
-            <div className="mt-8 pt-4 border-t border-white/10">
-              <div className="flex items-center gap-2 text-rose-400 font-bold text-xs uppercase tracking-wide">
-                <Flame className="w-4 h-4 fill-current animate-bounce" />
-                <span>Reserved for next 15 patients</span>
+              <div className="mt-5 pt-4 border-t border-white/20">
+                <div className="flex items-center gap-2 text-rose-300 font-bold text-xs uppercase tracking-wide">
+                  <Flame className="w-4 h-4 fill-current animate-bounce" />
+                  <span>Reserved for next 15 patients</span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Right Side: Lead submission form */}
           <div className="md:col-span-7 p-6 md:p-8 flex flex-col justify-center bg-white">
-            <div className="mb-5">
-              <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+            <div className="mb-6">
+              <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">
                 Anniversary Special
               </span>
-              <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight leading-tight mb-2">
-                Get FUE Transplant for Only <span className="text-emerald-600">₹34,999</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight leading-tight mb-2">
+                Claim Your Offer Now
               </h2>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-400 line-through">Org. ₹55,000</span>
-                <span className="text-xs font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
-                  Save ₹20,001 (36% Off)
-                </span>
-              </div>
+              <p className="text-sm text-gray-500">
+                Save ₹20,001 on your hair transplant today.
+              </p>
             </div>
+
 
             {submitStatus === "success" ? (
               <div className="py-8 text-center space-y-3" id="promo-success-msg">

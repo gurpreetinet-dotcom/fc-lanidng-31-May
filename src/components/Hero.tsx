@@ -1,10 +1,44 @@
-import { useState } from 'react';
-import { Check, Star, IndianRupee, ArrowRight, Loader2 } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Check, Star, IndianRupee, Loader2 } from "lucide-react";
 
 export function Hero() {
   const [formData, setFormData] = useState({ name: '', phone: '', city: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const titles = [
+    "Restore Your Confidence",
+    "Rediscover Yourself",
+    "Get A Natural Hairline",
+    "Painless & Safe Method"
+  ];
+  
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const currentTitle = titles[titleIndex];
+      
+      if (!isDeleting) {
+        if (displayedText.length < currentTitle.length) {
+          setDisplayedText(currentTitle.slice(0, displayedText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (displayedText.length > 0) {
+          setDisplayedText(currentTitle.slice(0, displayedText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setTitleIndex((prev) => (prev + 1) % titles.length);
+        }
+      }
+    }, isDeleting ? 30 : 60);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, titleIndex]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +55,6 @@ export function Hero() {
 
       let hasError = false;
 
-      // 1. Submit to Google Sheets (Webhook)
       try {
         await fetch('https://script.google.com/macros/s/AKfycbwNh_-Rwxqi7r2qrJpuVkxxwLpJ8iAJBMxXCSZdk37dCmA3MkcgplmJcKP7_GJioTwlSg/exec?gid=0', {
           method: 'POST',
@@ -33,7 +66,6 @@ export function Hero() {
         hasError = true;
       }
 
-      // 2. Submit to Email via FormSubmit
       try {
         await fetch('https://formsubmit.co/ajax/gurpreet.inet@gmail.com', {
           method: 'POST',
@@ -67,40 +99,48 @@ export function Hero() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-emerald-50 via-white to-emerald-50 pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-emerald-50 via-white to-emerald-50 pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden" id="home">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Text Content */}
           <div className="max-w-2xl relative">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-semibold mb-3">
               <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></div>
               #1 Hair Transplant Clinic in Ludhiana
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 tracking-tight min-h-[100px] md:min-h-[144px]">
               Regain Your Hair, <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-indigo-600">
-                Restore Your Confidence
+                {displayedText}
               </span>
+              <span className="animate-pulse border-r-4 border-emerald-600 ml-1 inline-block h-[0.8em]"></span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg leading-relaxed">
-              Experience world-class hair restoration with advanced FUE and IHT technology. <span className="font-bold text-gray-900 bg-yellow-100 rounded px-1">10+ Years Experience</span>
+            <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed">
+              Experience world-class hair restoration with advanced FUE and IHT technology.
             </p>
+            
+            <div className="mb-10 inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-50 to-yellow-100 shadow-sm border border-yellow-300 transform hover:-translate-y-0.5 transition-transform">
+              <div className="bg-gradient-to-br from-yellow-400 to-amber-500 text-white rounded-full p-1 border border-yellow-200 shadow-inner">
+                <Star className="w-4 h-4 fill-current" />
+              </div>
+              <span className="font-extrabold text-amber-900 tracking-tight uppercase text-sm">10+ Years Experience</span>
+            </div>
 
             {/* Before / After Polaroids */}
-            <div className="flex lg:block lg:absolute lg:left-[70%] xl:left-[80%] lg:-top-6 xl:-top-10 items-center justify-start mb-10 lg:mb-0 z-20 pointer-events-none lg:w-[320px] xl:w-[450px] lg:h-[380px] xl:h-[480px]">
+            <div className="flex flex-col items-center lg:block lg:absolute lg:left-[70%] xl:left-[80%] lg:-top-6 xl:-top-10 justify-start mb-10 lg:mb-0 z-20 pointer-events-none lg:w-[320px] xl:w-[450px] lg:h-[380px] xl:h-[480px]">
               {/* Before Polaroid */}
-              <div className="bg-white p-2 pb-7 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-6 border border-gray-100 w-36 sm:w-40 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
+              <div className="bg-white p-2 pb-7 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-6 border border-gray-100 w-44 sm:w-52 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
                   <img src="/hero-before.jpg" alt="Before" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-[13px] xl:text-[15px]">Before</div>
               </div>
               
-              {/* Dotted Curved Arrow SVG */}
-              <div className="w-16 sm:w-20 lg:hidden -mx-3 z-20 mt-6 lg:mt-0 opacity-80">
+              {/* Dotted Curved Arrow SVG (Mobile fixed pointing down to after) */}
+              <div className="w-16 sm:w-20 lg:hidden z-20 mt-4 mb-4 opacity-80 transform rotate-90 mx-auto">
                 <style>
                   {`
                     @keyframes drawDash {
@@ -140,7 +180,7 @@ export function Hero() {
               </div>
 
               {/* After Polaroid */}
-              <div className="bg-white p-2 pb-7 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-6 border border-gray-100 w-36 sm:w-40 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 mt-6 lg:mt-0 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
+              <div className="bg-white p-2 pb-7 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-6 border border-gray-100 w-44 sm:w-52 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 mt-2 lg:mt-0 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
                   <img src="/hero-after.jpg" alt="After" className="w-full h-full object-cover object-top" />
                 </div>
@@ -158,22 +198,24 @@ export function Hero() {
                     <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
                     <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
                   </div>
-                  <span>4.9/5 Rated</span>
+                  <span>4.8/5 Rated</span>
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
-                  <span>100% Doctor-Led</span>
-                </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
-                  <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                
+                <div className="flex items-center gap-2 pl-1.5 pr-4 py-1 rounded-full border border-gray-200 bg-white text-gray-800 text-sm font-semibold shadow-sm overflow-hidden">
+                  <div className="flex -space-x-2">
+                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="Patient" />
+                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Patient" />
+                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="Patient" />
+                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Patient" />
+                  </div>
                   <span>2000+ Transplants Done</span>
                 </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
                   <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
                   <span>Painless Surgery</span>
                 </div>
-              </div>
-              <div className="flex flex-wrap gap-3">
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium shadow-sm">
                   <Check className="w-4 h-4 text-emerald-600" strokeWidth={3} />
                   <span>Natural Hairline</span>

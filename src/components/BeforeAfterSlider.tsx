@@ -1,25 +1,20 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Generated dummy images
-import patient1 from "../assets/images/patient_1_before_after_1780228824722.png";
-import patient2 from "../assets/images/patient_2_before_after_1780228840289.png";
-import patient3 from "../assets/images/patient_3_before_after_1780228855541.png";
-
 const slides = [
   {
     id: 1,
-    image: patient1,
+    image: "/before-after1.jpg",
     alt: "Patient 1 Before and After"
   },
   {
     id: 2,
-    image: patient2,
+    image: "/before-after2.jpg",
     alt: "Patient 2 Before and After"
   },
   {
     id: 3,
-    image: patient3,
+    image: "/before-after3.jpg",
     alt: "Patient 3 Before and After"
   }
 ];
@@ -45,7 +40,7 @@ export function BeforeAfterSlider() {
             Life-Changing Hair Transformations
           </h2>
           <p className="text-gray-600 text-lg">
-            See real before-and-after results from patients who restored their hair and renewed their confidence. ⭐⭐⭐⭐⭐
+            See real before-and-after results from patients. ⭐⭐⭐⭐⭐
           </p>
         </div>
         

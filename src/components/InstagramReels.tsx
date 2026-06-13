@@ -54,7 +54,7 @@ export function InstagramReels() {
     {
       id: 2,
       thumbnail: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=400&h=711",
-      url: "https://www.instagram.com/fchtc.in",
+      url: "https://www.instagram.com/reel/DYo02oZyqcP/",
       videoUrl: reel2,
       views: "8.3K",
       likes: "856"
@@ -62,7 +62,7 @@ export function InstagramReels() {
     {
       id: 3,
       thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=711",
-      url: "https://www.instagram.com/fchtc.in",
+      url: "https://www.instagram.com/reel/DSjfYSskvhZ/",
       videoUrl: reel3,
       views: "24.1K",
       likes: "3.4K"
@@ -70,7 +70,7 @@ export function InstagramReels() {
     {
       id: 4,
       thumbnail: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400&h=711",
-      url: "https://www.instagram.com/fchtc.in",
+      url: "https://www.instagram.com/reel/DPYE7p4gKPG/",
       videoUrl: reel4,
       views: "15.7K",
       likes: "2.1K"
@@ -191,7 +191,7 @@ export function InstagramReels() {
                   </div>
                 ) : null}
 
-                {(reel.id === 5 || reel.id === 1) && reel.videoUrl ? (
+                {reel.videoUrl ? (
                   <video 
                     src={reel.videoUrl} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

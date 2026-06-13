@@ -1,9 +1,15 @@
 import { Instagram, Play, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
+import reel1 from "../assets/images/reel1.mp4";
+import reel2 from "../assets/images/reel2.mp4";
+import reel3 from "../assets/images/reel3.mp4";
+import reel4 from "../assets/images/reel4.mp4";
+import reel5 from "../assets/images/reel5.mp4";
 
 export function InstagramReels() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeReelId, setActiveReelId] = useState<number | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -28,20 +34,20 @@ export function InstagramReels() {
   };
 
   useEffect(() => {
-    if (activeReelId) return; // Pause auto-scrolling when a reel is open
+    if (activeReelId || isHovered) return; // Pause auto-scrolling when a reel is open or hovered
     
     const interval = setInterval(() => {
       scroll('right');
-    }, 4000); // Auto slide every 4 seconds
+    }, 5000); // Auto slide every 5 seconds
     return () => clearInterval(interval);
-  }, [activeReelId]);
+  }, [activeReelId, isHovered]);
 
   const reels = [
     {
       id: 1,
       thumbnail: "/reel1-thumb.png",
-      url: "https://www.instagram.com/p/DZFDNR_y142/",
-      videoUrl: "/reel1.mp4", // Upload your video to the public folder and name it 'reel1.mp4'
+      url: "https://www.instagram.com/reel/DEHrjt2yGtL/",
+      videoUrl: reel1,
       views: "12.5K",
       likes: "1.2K"
     },
@@ -49,6 +55,7 @@ export function InstagramReels() {
       id: 2,
       thumbnail: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=400&h=711",
       url: "https://www.instagram.com/fchtc.in",
+      videoUrl: reel2,
       views: "8.3K",
       likes: "856"
     },
@@ -56,6 +63,7 @@ export function InstagramReels() {
       id: 3,
       thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=711",
       url: "https://www.instagram.com/fchtc.in",
+      videoUrl: reel3,
       views: "24.1K",
       likes: "3.4K"
     },
@@ -63,13 +71,15 @@ export function InstagramReels() {
       id: 4,
       thumbnail: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400&h=711",
       url: "https://www.instagram.com/fchtc.in",
+      videoUrl: reel4,
       views: "15.7K",
       likes: "2.1K"
     },
     {
       id: 5,
       thumbnail: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400&h=711",
-      url: "https://www.instagram.com/fchtc.in",
+      url: "https://www.instagram.com/reel/DPLvaufEvAE/",
+      videoUrl: reel5,
       views: "45.2K",
       likes: "5.8K"
     }
@@ -105,7 +115,11 @@ export function InstagramReels() {
           </div>
         </div>
 
-        <div className="relative -mx-4 sm:mx-0 group">
+        <div 
+          className="relative -mx-4 sm:mx-0 group"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {/* Left Arrow */}
           <button 
             onClick={() => scroll('left')}
@@ -131,7 +145,7 @@ export function InstagramReels() {
               <div 
                 key={reel.id}
                 onClick={() => {
-                  if (reel.url && !activeReelId) {
+                  if (!activeReelId) {
                     setActiveReelId(reel.id);
                   }
                 }}
@@ -152,32 +166,47 @@ export function InstagramReels() {
                      </div>
                      {reel.videoUrl ? (
                          <video 
-                           src={reel.videoUrl} 
+                           src={reel.videoUrl}
+                           type="video/mp4"
                            autoPlay 
-                           controls 
-                           className="w-full h-full object-cover"
+                           controls
+                           playsInline
+                           className="w-full h-full object-contain bg-black"
                            onClick={(e) => e.stopPropagation()}
-                         />
+                         >
+                           Your browser does not support the video tag.
+                         </video>
                      ) : (
-                         <iframe 
-                            src={`${reel.url}embed`} 
-                            width="100%" 
-                            height="100%" 
-                            frameBorder="0" 
-                            scrolling="no" 
-                            allowTransparency={true}
-                            allow="encrypted-media"
-                            className="w-full h-full"
-                          ></iframe>
+                         <div className="relative w-full h-full bg-black overflow-hidden pointer-events-auto">
+                           <iframe 
+                              src={`${reel.url}embed`} 
+                              frameBorder="0" 
+                              scrolling="no" 
+                              allowTransparency={true}
+                              allow="encrypted-media"
+                              className="absolute z-10 w-[110%] h-[125%] max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[1.1]"
+                            ></iframe>
+                         </div>
                      )}
                   </div>
                 ) : null}
 
-                <img 
-                  src={reel.thumbnail} 
-                  alt="Instagram Reel" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                {(reel.id === 5 || reel.id === 1) && reel.videoUrl ? (
+                  <video 
+                    src={reel.videoUrl} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img 
+                    src={reel.thumbnail} 
+                    alt="Instagram Reel" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                )}
                 
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80 opacity-90 group-hover:opacity-100 transition-opacity" />

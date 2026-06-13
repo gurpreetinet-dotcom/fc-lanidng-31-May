@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Sparkles, Check, Flame, Clock, Loader2, Phone, User, MapPin } from "lucide-react";
 
 export function PromoPopup() {

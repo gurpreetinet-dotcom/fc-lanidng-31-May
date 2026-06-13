@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { Star, Check, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
-import bgImage from "../assets/images/smiling_man_clinic_bg_1780230010689.png";
-
 const GoogleLogo = () => (
   <svg viewBox="0 0 24 24" className="w-8 h-8 flex-shrink-0">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -69,21 +67,19 @@ export function GoogleReviews() {
     setCurrentIndex((prev) => (prev === 0 ? totalCards - cardsToShow : prev - 1));
   };
 
+  const [isHovered, setIsHovered] = useState(false);
+
   useEffect(() => {
+    if (isHovered) return;
     const timer = setInterval(() => {
       next();
     }, 5000);
     return () => clearInterval(timer);
-  }, [next]);
+  }, [next, isHovered]);
 
   return (
     <section className="relative py-24 overflow-hidden" id="reviews">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      >
-        <div className="absolute inset-0 bg-gray-950/60"></div>
-      </div>
+      <div className="absolute inset-0 bg-gray-900"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
         <div className="text-center mb-16">
@@ -144,7 +140,11 @@ export function GoogleReviews() {
         </div>
 
         {/* Reviews Carousel */}
-        <div className="relative z-20 w-full max-w-full">
+        <div 
+          className="relative z-20 w-full max-w-full"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <div className="overflow-hidden py-6 -my-6">
             <div 
               className="flex transition-transform duration-500 ease-in-out"

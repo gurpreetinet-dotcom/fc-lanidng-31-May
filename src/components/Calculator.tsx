@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Calculator as CalcIcon, Loader2 } from "lucide-react";
 
 const NorwoodFace = ({ level, active }: { level: number; active: boolean }) => {
@@ -235,7 +235,6 @@ export function Calculator() {
                 </button>
               </form>
             </div>
-          </div>
           </div>
         </div>
       </div>

@@ -1,33 +1,38 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import beforeAfter1 from "../assets/images/before-after1.jpg";
+import beforeAfter2 from "../assets/images/before-after2.jpg";
+import beforeAfter3 from "../assets/images/before-after3.jpg";
 
 const slides = [
   {
     id: 1,
-    image: "/before-after1.jpg",
+    image: beforeAfter1,
     alt: "Patient 1 Before and After"
   },
   {
     id: 2,
-    image: "/before-after2.jpg",
+    image: beforeAfter2,
     alt: "Patient 2 Before and After"
   },
   {
     id: 3,
-    image: "/before-after3.jpg",
+    image: beforeAfter3,
     alt: "Patient 3 Before and After"
   }
 ];
 
 export function BeforeAfterSlider() {
   const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    if (isHovered) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isHovered]);
 
   const next = () => setCurrent((c) => (c + 1) % slides.length);
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
@@ -44,7 +49,11 @@ export function BeforeAfterSlider() {
           </p>
         </div>
         
-        <div className="relative max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-2 bg-gray-50 border border-gray-100">
+        <div 
+          className="relative max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-2 bg-gray-50 border border-gray-100"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
            <div className="relative w-full aspect-square md:aspect-video bg-gray-100 rounded-2xl overflow-hidden">
              {slides.map((slide, index) => (
                 <img

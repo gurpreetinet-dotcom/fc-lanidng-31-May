@@ -1,43 +1,38 @@
-import { ArrowRight } from "lucide-react";
+import maleHairTransplant from "../assets/images/male-hair-transplant.jpg";
+import femaleHairTransplant from "../assets/images/female-hair-transplant.jpg";
+import recedingHairlineReconstruction from "../assets/images/receding-hairline-reconstruction.jpg";
+import beardTransplant from "../assets/images/beard-transplant.jpg";
 
 const services = [
   {
     title: "Male Hair Transplant",
-    image: "/male-hair-transplant.jpg"
+    image: maleHairTransplant
   },
   {
     title: "Female Hair Transplantation",
-    image: "/female-hair-transplant.jpg"
+    image: femaleHairTransplant
   },
   {
     title: "Receding Hairline Reconstruction",
-    image: "/receding-hairline-reconstruction.jpg"
+    image: recedingHairlineReconstruction
   },
   {
     title: "Beard Hair Transplant",
-    image: "/beard-transplant.jpg"
+    image: beardTransplant
   }
 ];
 
 export function Services() {
   return (
-    <section className="py-24 bg-white" id="our-services">
+    <section className="py-24 bg-emerald-50" id="our-services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-              Our Services
-            </h2>
-            <p className="text-gray-600 text-lg">
-              At First Choice, we provide advanced hair restoration and hair transplant services, where we aim to redefine your confidence by restoring not just your hair but your youthful vitality.
-            </p>
-          </div>
-          <div className="shrink-0 mb-2 lg:mb-0">
-            <a href="#book" className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg shadow-emerald-600/20 transform hover:-translate-y-0.5">
-              Explore Services
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+            Our Services
+          </h2>
+          <p className="text-gray-600 text-lg">
+            At First Choice, we provide advanced hair restoration and hair transplant services, where we aim to redefine your confidence by restoring not just your hair but your youthful vitality.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check, Star, IndianRupee, Loader2 } from "lucide-react";
 
 export function Hero() {
@@ -130,33 +130,13 @@ export function Hero() {
             </div>
 
             {/* Before / After Polaroids */}
-            <div className="flex flex-col items-center lg:block lg:absolute lg:left-[70%] xl:left-[80%] lg:-top-6 xl:-top-10 justify-start mb-10 lg:mb-0 z-20 pointer-events-none lg:w-[320px] xl:w-[450px] lg:h-[380px] xl:h-[480px]">
+            <div className="flex flex-row items-center justify-center gap-3 sm:gap-8 lg:block lg:absolute lg:left-[70%] xl:left-[80%] lg:-top-6 xl:-top-10 mb-10 lg:mb-0 z-20 pointer-events-none lg:w-[320px] xl:w-[450px] lg:h-[380px] xl:h-[480px] w-full px-2">
               {/* Before Polaroid */}
-              <div className="bg-white p-2 pb-7 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-6 border border-gray-100 w-44 sm:w-52 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
+              <div className="bg-white p-2 pb-6 sm:p-3 sm:pb-9 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-2 lg:-rotate-6 border border-gray-100 w-[47%] max-w-[220px] sm:w-64 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
                   <img src="/hero-before.jpg" alt="Before" className="w-full h-full object-cover object-top" />
                 </div>
-                <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-[13px] xl:text-[15px]">Before</div>
-              </div>
-              
-              {/* Dotted Curved Arrow SVG (Mobile fixed pointing down to after) */}
-              <div className="w-16 sm:w-20 lg:hidden z-20 mt-4 mb-4 opacity-80 transform rotate-90 mx-auto">
-                <style>
-                  {`
-                    @keyframes drawDash {
-                      to {
-                        stroke-dashoffset: -20;
-                      }
-                    }
-                    .animate-curved-dash {
-                      animation: drawDash 1s linear infinite;
-                    }
-                  `}
-                </style>
-                <svg viewBox="0 0 100 50" fill="none" className="w-full h-auto text-emerald-500 drop-shadow-sm overflow-visible">
-                  <path d="M10,40 Q50,-15 90,30" className="animate-curved-dash" stroke="currentColor" strokeWidth="2.5" strokeDasharray="5,5" fill="none" strokeLinecap="round" />
-                  <path d="M78,18 L94,32 L78,42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                </svg>
+                <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-xs sm:text-[13px] xl:text-[15px]">Before</div>
               </div>
 
               {/* Desktop Arrow */}
@@ -180,11 +160,11 @@ export function Hero() {
               </div>
 
               {/* After Polaroid */}
-              <div className="bg-white p-2 pb-7 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-6 border border-gray-100 w-44 sm:w-52 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 mt-2 lg:mt-0 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
+              <div className="bg-white p-2 pb-6 sm:p-3 sm:pb-9 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-2 lg:rotate-6 border border-gray-100 w-[47%] max-w-[220px] sm:w-64 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
                   <img src="/hero-after.jpg" alt="After" className="w-full h-full object-cover object-top" />
                 </div>
-                <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-bold italic text-emerald-600 text-[13px] xl:text-[15px]">After</div>
+                <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-bold italic text-emerald-600 text-xs sm:text-[13px] xl:text-[15px]">After</div>
               </div>
             </div>
             

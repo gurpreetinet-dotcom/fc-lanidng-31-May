@@ -18,7 +18,7 @@ export function PromoPopup() {
 
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 10000); // 10,000 ms = 10 seconds
+    }, 7000); // 7,000 ms = 7 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -138,7 +138,7 @@ export function PromoPopup() {
           <div className="md:col-span-5 relative bg-emerald-900 min-h-[300px] md:min-h-full flex flex-col justify-end p-6 md:p-8 overflow-hidden">
             {/* Promo Image */}
             <img 
-              src="/popup-promo.jpg" 
+              src="/pop-up.jpg" 
               alt="Hair Transplant Offer" 
               className="absolute inset-0 w-full h-full object-cover"
               onError={(e) => {

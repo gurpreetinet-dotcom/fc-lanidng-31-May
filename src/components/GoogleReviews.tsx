@@ -11,30 +11,39 @@ const GoogleLogo = () => (
 
 const googleReviewsData = [
   {
-    name: "nagesh boyina",
-    date: "6 months ago",
-    images: ["/before.jpg", "/result.jpg"],
-    content: "I came from Andra Pradesh, our many friends already undergone of hair transplantation from First choice Hair Transplant Ludhiana and they got very good results. We are fully satisfied with all the team of clinic."
-  },
-  {
     name: "Monu Kumar",
-    date: "8 months ago",
+    date: "9 months ago",
+    images: ["/monu-before.jpg", "/monu-1.jpg", "/monu-2.jpg"],
     content: "It's the best hair transplant clinic in Ludhiana, price and services are it's best. Even they follow you till you got results. I am satisfied with the services of First choice"
   },
   {
-    name: "Dushyant Kumar",
-    date: "5 months ago",
-    content: "I came from haryana for my transplant and im so happy i chose first choice clinic. Excellent experience, very professional staff. The clinic was very hygienic. Highly recommend"
+    name: "Vicky Bains",
+    date: "a year ago",
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjVmJhIFAwW1pgrEeTMpoCuq7MQM5pd0h9pAXjOJPRknxiC3RSI=w97-h97-p-rp-mo-br100",
+    content: "Hi, I am from Melbourne and one of my best friend from New Zealand recommended this place for hair transplant. I highly recommend First Choice Hair Transplant & Cosmetics. Service was above and beyond my expectations. Experience Doctors especially Jatin Goyal and Highly trained and friendly staff make my treatment very pleasant and resolved all my enquires. Even after treatment they always willing to guide me throughout whole journey."
   },
   {
-    name: "Vikram Verma",
-    date: "3 months ago",
-    content: "I got my transplant done here and it completely changed my look. Very professional team, hygienic environment, and excellent post-surgery care. Thank you First Choice!"
+    name: "Mani Kumar",
+    date: "10 months ago",
+    images: ["/mani-1.jpg", "/mani-2.jpg"],
+    content: "Best clinic in ludhiana, wonderful experience and staff is super cooperative...my transplant done from seven to eight years they are best I given to them many reference ..all patients are very happy thanks first choice team I recommend to everyone"
   },
   {
-    name: "Jaspreet Singh",
-    date: "1 month ago",
-    content: "Affordable and transparent pricing. Started seeing great results after 6 months. Best hair transplant clinic in Ludhiana right now. Highly recommended for anyone looking for lasting results."
+    name: "Vipul Hadole",
+    date: "9 months ago",
+    images: ["/vipul-0.jpg", "/vipul-1.jpg"],
+    content: "I am from Indian Army, Many of my friends undergone hair transplant in First choice Hair transplant clinic Ludhiana. They all got very amazing results, so I came specifically on their recommendation. Will share my results soon. Thanks First choice"
+  },
+  {
+    name: "Darshan",
+    date: "1 year ago",
+    images: ["/darshan-1.jpg", "/darshan-2.jpg", "/darshan-3.jpg"],
+    content: "I had an incredible experience at First Choice Hair Transplant Clinic in Ludhiana, Punjab. Being from Canada, I was a bit apprehensive about getting a hair transplant abroad, but after researching several clinics in Ludhiana, I decided to go with First Choice, and I am so glad I did."
+  },
+  {
+    name: "Gagandeep Singh",
+    date: "7 years ago",
+    content: "I believe the true definition of excellent hair transplant expert in India could only be \"First Choice Hair Transplant Clinic\". I had my FUE done with them about 2 weeks ago and I am very happy with my results so far. The staff is really experienced and proficient who truly cares about their patients even after surgery. I greatly appreciate their considerable time and effort they have put in. I highly recommend First Choice to anyone who is looking for a great Hair Transplant … Thanks First Choice Team"
   }
 ];
 
@@ -55,7 +64,7 @@ export function GoogleReviews() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const totalCards = googleReviewsData.length + 1; // +1 for AI Summary Box
+  const totalCards = googleReviewsData.length;
 
   const next = useCallback(() => {
     if (totalCards <= cardsToShow) return;
@@ -78,8 +87,10 @@ export function GoogleReviews() {
   }, [next, isHovered]);
 
   return (
-    <section className="relative py-24 overflow-hidden" id="reviews">
-      <div className="absolute inset-0 bg-gray-900"></div>
+    <section className="relative py-24 overflow-hidden bg-gray-900" id="reviews">
+      <div className="absolute inset-0">
+        <img src="/reviews-bg.jpg" alt="Reviews Background" className="w-full h-full object-cover opacity-50" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
         <div className="text-center mb-16">
@@ -150,53 +161,19 @@ export function GoogleReviews() {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 400}px)` }}
             >
-              {/* AI Summary Box */}
-              <div className="w-[400px] px-3 flex flex-col flex-shrink-0">
-                <div className="bg-white rounded-3xl p-6 md:p-7 shadow-2xl flex flex-col h-full border border-gray-100 relative">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl rounded-tl-full rounded-tr-full rounded-bl-full bg-indigo-500 flex items-center justify-center text-white shadow-md flex-shrink-0">
-                      <Sparkles className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-indigo-500 text-base leading-tight">AI-Generated Summary</h4>
-                      <p className="text-xs text-gray-400 mt-0.5">Based on 1,055 reviews</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-0.5 mb-4">
-                    {[...Array(4)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    <div className="w-5 h-5 overflow-hidden relative">
-                      <Star className="w-5 h-5 text-gray-300 absolute" />
-                      <div className="absolute left-0 top-0 overflow-hidden w-[60%]">
-                        <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                      </div>
-                    </div>
-                  </div>
-                  <ul className="space-y-4 flex-grow text-[15px] leading-snug text-gray-800">
-                    <li className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-gray-900 mt-0.5 flex-shrink-0" strokeWidth={3} />
-                      <span>Consistently high success rate and completely natural-looking hair transplants.</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-gray-900 mt-0.5 flex-shrink-0" strokeWidth={3} />
-                      <span>Outstanding customer support is consistently praised for responsiveness.</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-gray-900 mt-0.5 flex-shrink-0" strokeWidth={3} />
-                      <span>Hygienic clinic environment with honest, transparent, and affordable pricing.</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
               {/* User Reviews */}
               {googleReviewsData.map((review, idx) => (
                 <div key={idx} className="w-[400px] px-3 flex flex-col flex-shrink-0">
                   <div className="bg-white rounded-3xl p-6 md:p-7 shadow-2xl flex flex-col h-full border border-gray-100">
                     <div className="flex items-start gap-3 mb-4">
-                      <div className="flex-shrink-0 border border-gray-100 rounded-full p-2 bg-gray-50/50">
-                        <GoogleLogo />
+                      <div className="flex-shrink-0 border border-gray-100 rounded-full w-10 h-10 flex items-center justify-center bg-gray-50/50 overflow-hidden">
+                        {(review as any).avatar ? (
+                          <img src={(review as any).avatar} alt={`${review.name} avatar`} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="p-2 w-full h-full"> 
+                            <GoogleLogo />
+                          </div>
+                        )}
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-900 leading-tight text-[15px]">{review.name}</h4>

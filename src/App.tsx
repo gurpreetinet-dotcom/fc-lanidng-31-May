@@ -12,6 +12,7 @@ import { Process } from './components/Process';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import { GoogleReviews } from './components/GoogleReviews';
 import { VideoTestimonials } from './components/VideoTestimonials';
+import { Surgeon } from './components/Surgeon';
 import { InstagramReels } from './components/InstagramReels';
 import { FAQ } from './components/FAQ';
 import { Location } from './components/Location';
@@ -28,6 +29,7 @@ export default function App() {
         <Stats />
         <BeforeAfterSlider />
         <Features />
+        <Surgeon />
         <VideoTestimonials />
         <Process />
         <Services />

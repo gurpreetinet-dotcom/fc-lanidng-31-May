@@ -15,7 +15,7 @@ export function VideoTestimonials() {
     {
       id: 3,
       title: "Hair Transplant Testimonial 3",
-      youtubeId: "KXtBS1fvchM",
+      youtubeId: "GNEtG2FFdkA",
     }
   ];
 

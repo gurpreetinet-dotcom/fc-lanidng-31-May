@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Star, Check, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { getAssetUrl } from "../lib/assets";
 const GoogleLogo = () => (
   <svg viewBox="0 0 24 24" className="w-8 h-8 flex-shrink-0">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -89,7 +90,7 @@ export function GoogleReviews() {
   return (
     <section className="relative py-24 overflow-hidden bg-gray-900" id="reviews">
       <div className="absolute inset-0">
-        <img src="/reviews-bg.jpg" alt="Reviews Background" className="w-full h-full object-cover opacity-50" />
+        <img src={getAssetUrl("/reviews-bg.jpg")} alt="Reviews Background" className="w-full h-full object-cover opacity-50" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
@@ -193,7 +194,7 @@ export function GoogleReviews() {
                         {review.images.map((img, imgIdx) => (
                           <div key={imgIdx} className="rounded-xl overflow-hidden relative border border-gray-100 bg-gray-50 h-24 w-24 flex-shrink-0">
                             <img 
-                              src={img} 
+                              src={getAssetUrl(img)} 
                               alt={`Review photo by ${review.name}`} 
                               className="w-full h-full object-cover object-top"
                             />

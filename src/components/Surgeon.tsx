@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../lib/assets';
 
 export function Surgeon() {
   return (
@@ -8,15 +9,15 @@ export function Surgeon() {
           <div className="w-full md:w-5/12 flex justify-center p-8 md:p-12">
              <div className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-white shadow-xl relative bg-white flex-shrink-0">
                <img 
-                 src="/dr-jatin-goyal.png" 
+                 src={getAssetUrl("/dr-jatin-goyal.png")} 
                  alt="Dr. Jatin - Hair Transplant Surgeon" 
                  className="w-full h-full object-cover" 
                  onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     if (target.src.endsWith('.png')) {
-                      target.src = '/dr-jatin.jpg';
+                      target.src = getAssetUrl('/dr-jatin.jpg');
                     } else if (target.src.endsWith('.jpg')) {
-                      target.src = '/dr-jatin.jpeg';
+                      target.src = getAssetUrl('/dr-jatin.jpeg');
                     } else {
                       target.src = "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=400&h=400";
                     }

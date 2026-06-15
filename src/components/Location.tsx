@@ -1,6 +1,33 @@
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, ShieldCheck, Sparkles, Award } from "lucide-react";
+import lobbyImg from "../assets/images/clinic_lobby_1781472160359.jpg";
+import treatmentImg from "../assets/images/clinic_treatment_1781472177370.jpg";
+import consultationImg from "../assets/images/clinic_consultation_1781472193235.jpg";
 
 export function Location() {
+  const facilityPics = [
+    {
+      img: lobbyImg,
+      title: "Luxury Reception & Lounge",
+      desc: "A warm, premium welcoming space designed for complete comfort and peace of mind.",
+      tag: "5-Star Comfort",
+      icon: <Sparkles className="w-4 h-4 text-emerald-500" />,
+    },
+    {
+      img: consultationImg,
+      title: "Private Consultation Suites",
+      desc: "Confidential and professional diagnostic spaces equipped with state-of-the-art hair scanners.",
+      tag: "Private & Digital",
+      icon: <Award className="w-4 h-4 text-emerald-500" />,
+    },
+    {
+      img: treatmentImg,
+      title: "Advanced Sterile Procedure Rooms",
+      desc: "Fully equipped with international standard surgical equipment and micro-grafting modules.",
+      tag: "100% Sterile",
+      icon: <ShieldCheck className="w-4 h-4 text-emerald-500" />,
+    },
+  ];
+
   return (
     <section className="py-24 bg-gray-50" id="location">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,8 +36,81 @@ export function Location() {
             Visit Our Clinic
           </h2>
           <p className="text-gray-600 text-lg">
-            Conveniently located to serve you with world-class hair restoration facilities.
+            Experience premium care at our state-of-the-art hair restoration facilities.
           </p>
+        </div>
+
+        {/* Collage Gallery Section */}
+        <div className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            {/* Main Featured Image - Lobby Reception */}
+            <div className="col-span-1 md:col-span-7 h-[350px] md:h-[500px] group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col relative">
+              <div className="absolute inset-0">
+                <img 
+                  src={facilityPics[0].img} 
+                  alt={facilityPics[0].title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+              </div>
+
+              {/* Tag overlay */}
+              <div className="absolute top-6 left-6 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-full shadow-md z-10">
+                {facilityPics[0].icon}
+                <span className="text-xs font-bold text-gray-900">{facilityPics[0].tag}</span>
+              </div>
+
+              {/* Bottom text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 z-10 text-white">
+                <h3 className="font-extrabold text-2xl md:text-3xl mb-2 text-white leading-tight">
+                  {facilityPics[0].title}
+                </h3>
+                <p className="text-gray-200 text-sm md:text-base max-w-xl leading-relaxed">
+                  {facilityPics[0].desc}
+                </p>
+              </div>
+            </div>
+
+            {/* Side Stacked Images */}
+            <div className="col-span-1 md:col-span-5 flex flex-col gap-6 h-auto md:h-[500px]">
+              {facilityPics.slice(1).map((pic, idx) => (
+                <div 
+                  key={idx} 
+                  id={`clinic-facility-side-${idx}`}
+                  className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex-1 flex flex-col relative min-h-[220px]"
+                >
+                  <div className="absolute inset-0">
+                    <img 
+                      src={pic.img} 
+                      alt={pic.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                  </div>
+
+                  {/* Tag overlay */}
+                  <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-10">
+                    {pic.icon}
+                    <span className="text-xs font-bold text-gray-900">{pic.tag}</span>
+                  </div>
+
+                  {/* Bottom text overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10 text-white">
+                    <h3 className="font-extrabold text-lg md:text-xl mb-1 text-white leading-tight">
+                      {pic.title}
+                    </h3>
+                    <p className="text-gray-200 text-xs md:text-sm max-w-md leading-relaxed opacity-90">
+                      {pic.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-start">

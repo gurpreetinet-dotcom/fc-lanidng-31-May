@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Check, Star, IndianRupee, Loader2 } from "lucide-react";
+import { getAssetUrl } from '../lib/assets';
 
 export function Hero() {
   const [formData, setFormData] = useState({ name: '', phone: '', city: '' });
@@ -134,7 +135,7 @@ export function Hero() {
               {/* Before Polaroid */}
               <div className="bg-white p-2 pb-6 sm:p-3 sm:pb-9 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-2 lg:-rotate-6 border border-gray-100 w-[47%] max-w-[220px] sm:w-64 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
-                  <img src="/hero-before.jpg" alt="Before" className="w-full h-full object-cover object-top" />
+                  <img src={getAssetUrl("/hero-before.jpg")} alt="Before" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-xs sm:text-[13px] xl:text-[15px]">Before</div>
               </div>
@@ -162,7 +163,7 @@ export function Hero() {
               {/* After Polaroid */}
               <div className="bg-white p-2 pb-6 sm:p-3 sm:pb-9 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-2 lg:rotate-6 border border-gray-100 w-[47%] max-w-[220px] sm:w-64 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
-                  <img src="/hero-after.jpg" alt="After" className="w-full h-full object-cover object-top" />
+                  <img src={getAssetUrl("/hero-after.jpg")} alt="After" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-bold italic text-emerald-600 text-xs sm:text-[13px] xl:text-[15px]">After</div>
               </div>
@@ -181,14 +182,14 @@ export function Hero() {
                   <span>4.8/5 Rated</span>
                 </div>
                 
-                <div className="flex items-center gap-2 pl-1.5 pr-4 py-1 rounded-full border border-gray-200 bg-white text-gray-800 text-sm font-semibold shadow-sm overflow-hidden">
-                  <div className="flex -space-x-2">
-                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="Patient" />
-                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Patient" />
-                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="Patient" />
-                    <img className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Patient" />
+                <div className="flex items-center gap-3 pl-2 pr-5 py-1.5 rounded-full border border-emerald-100 bg-emerald-50/30 text-gray-900 shadow-sm overflow-hidden">
+                  <div className="flex -space-x-4">
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/monu-2.jpg")} alt="Patient Monu Results" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/mani-1.jpg")} alt="Patient Mani Results" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/vipul-1.jpg")} alt="Patient Vipul Results" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/darshan-3.jpg")} alt="Patient Darshan Results" />
                   </div>
-                  <span>2000+ Transplants Done</span>
+                  <span className="text-base md:text-lg font-extrabold text-emerald-800 tracking-tight">2000+ Transplants Done</span>
                 </div>
               </div>
               <div className="flex flex-wrap gap-3">

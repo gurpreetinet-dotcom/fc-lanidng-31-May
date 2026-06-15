@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { X, Sparkles, Check, Flame, Clock, Loader2, Phone, User, MapPin } from "lucide-react";
+import { getAssetUrl } from '../lib/assets';
 
 export function PromoPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,7 +139,7 @@ export function PromoPopup() {
           <div className="md:col-span-5 relative bg-emerald-900 min-h-[300px] md:min-h-full flex flex-col justify-end p-6 md:p-8 overflow-hidden">
             {/* Promo Image */}
             <img 
-              src="/pop-up.jpg" 
+              src={getAssetUrl("/pop-up.jpg")} 
               alt="Hair Transplant Offer" 
               className="absolute inset-0 w-full h-full object-cover"
               onError={(e) => {

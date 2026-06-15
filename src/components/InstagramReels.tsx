@@ -43,13 +43,13 @@ export function InstagramReels() {
   };
 
   useEffect(() => {
-    if (isHovered) return; // Pause auto-scrolling when hovered
+    if (isHovered || playingId !== null) return; // Pause auto-scrolling when hovered or when a video is playing
     
     const interval = setInterval(() => {
       scroll('right');
-    }, 5000); // Auto slide every 5 seconds
+    }, 10000); // Slowed auto slide to every 10 seconds
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, playingId]);
 
   const reels = [
     {

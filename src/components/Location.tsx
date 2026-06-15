@@ -1,115 +1,159 @@
-import { MapPin, Phone, Clock, ShieldCheck, Sparkles, Award } from "lucide-react";
-import lobbyImg from "../assets/images/clinic_lobby_1781472160359.jpg";
-import treatmentImg from "../assets/images/clinic_treatment_1781472177370.jpg";
-import consultationImg from "../assets/images/clinic_consultation_1781472193235.jpg";
+import { MapPin, Phone, Clock, ShieldCheck, Sparkles, Award, Heart, Cpu, Eye, Microscope, X, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 export function Location() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   const facilityPics = [
     {
-      img: lobbyImg,
-      title: "Luxury Reception & Lounge",
-      desc: "A warm, premium welcoming space designed for complete comfort and peace of mind.",
-      tag: "5-Star Comfort",
-      icon: <Sparkles className="w-4 h-4 text-emerald-500" />,
+      img: "/clinic1.jpg",
+      title: "Clinical Lobby & Lounge",
+      desc: "Premium, modern welcoming lounge designed for complete client comfort.",
+      tag: "5-Star Lounge",
+      icon: <Sparkles className="w-4 h-4 text-emerald-600" />,
     },
     {
-      img: consultationImg,
-      title: "Private Consultation Suites",
-      desc: "Confidential and professional diagnostic spaces equipped with state-of-the-art hair scanners.",
-      tag: "Private & Digital",
-      icon: <Award className="w-4 h-4 text-emerald-500" />,
+      img: "/clinic2.jpg",
+      title: "VIP Consultation Suite",
+      desc: "Private consultation spaces for customized diagnostic evaluation.",
+      tag: "100% Private",
+      icon: <Award className="w-4 h-4 text-emerald-600" />,
     },
     {
-      img: treatmentImg,
-      title: "Advanced Sterile Procedure Rooms",
-      desc: "Fully equipped with international standard surgical equipment and micro-grafting modules.",
-      tag: "100% Sterile",
-      icon: <ShieldCheck className="w-4 h-4 text-emerald-500" />,
+      img: "/clinic3.jpg",
+      title: "Sterile Procedure Room",
+      desc: "Fully equipped sterile rooms for advanced micro-grafting.",
+      tag: "Medical Safety",
+      icon: <ShieldCheck className="w-4 h-4 text-emerald-600" />,
+    },
+    {
+      img: "/clinic4.jpg",
+      title: "Digital Follicle Diagnostics",
+      desc: "Advanced scalp analysis and precise assessment scanners.",
+      tag: "Advanced Tech",
+      icon: <Cpu className="w-4 h-4 text-emerald-600" />,
+    },
+    {
+      img: "/clinic5.jpg",
+      title: "Luxury Recovery Suite",
+      desc: "Comfortable recovery spaces configured with peaceful lounges.",
+      tag: "Rest & Recover",
+      icon: <Heart className="w-4 h-4 text-emerald-600" />,
+    },
+    {
+      img: "/clinic6.jpg",
+      title: "Microscopic Prep Hub",
+      desc: "Digital stereomicroscopes for ultra-precise graft dissection.",
+      tag: "Graft Precision",
+      icon: <Microscope className="w-4 h-4 text-emerald-600" />,
+    },
+    {
+      img: "/clinic7.jpg",
+      title: "Premium Gallery Corridor",
+      desc: "Immaculate architectural detailing representing clinical excellence.",
+      tag: "World Class Stand",
+      icon: <Eye className="w-4 h-4 text-emerald-600" />,
     },
   ];
+
+  // Prevent scrolling when lightbox is open
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [lightboxIndex]);
+
+  const openLightbox = (idx: number) => setLightboxIndex(idx);
+  const closeLightbox = () => setLightboxIndex(null);
+  const nextLightbox = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev !== null ? (prev + 1) % facilityPics.length : null));
+  };
+  const prevLightbox = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev !== null ? (prev - 1 + facilityPics.length) % facilityPics.length : null));
+  };
 
   return (
     <section className="py-24 bg-gray-50" id="location">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Visit Our Clinic
+            State-of-the-Art Facilities
           </h2>
           <p className="text-gray-600 text-lg">
-            Experience premium care at our state-of-the-art hair restoration facilities.
+            Experience premium care at our advanced clinic environment.
           </p>
         </div>
 
-        {/* Collage Gallery Section */}
-        <div className="mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            
-            {/* Main Featured Image - Lobby Reception */}
-            <div className="col-span-1 md:col-span-7 h-[350px] md:h-[500px] group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col relative">
-              <div className="absolute inset-0">
-                <img 
-                  src={facilityPics[0].img} 
-                  alt={facilityPics[0].title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-              </div>
-
-              {/* Tag overlay */}
-              <div className="absolute top-6 left-6 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-full shadow-md z-10">
-                {facilityPics[0].icon}
-                <span className="text-xs font-bold text-gray-900">{facilityPics[0].tag}</span>
-              </div>
-
-              {/* Bottom text overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 z-10 text-white">
-                <h3 className="font-extrabold text-2xl md:text-3xl mb-2 text-white leading-tight">
-                  {facilityPics[0].title}
-                </h3>
-                <p className="text-gray-200 text-sm md:text-base max-w-xl leading-relaxed">
-                  {facilityPics[0].desc}
-                </p>
-              </div>
-            </div>
-
-            {/* Side Stacked Images */}
-            <div className="col-span-1 md:col-span-5 flex flex-col gap-6 h-auto md:h-[500px]">
-              {facilityPics.slice(1).map((pic, idx) => (
+        {/* 2-Column Collage Layout inspired by user reference */}
+        <div className="mb-16 max-w-5xl mx-auto">
+          <div className="bg-white rounded-xl p-1.5 sm:p-2 md:p-3 shadow-lg border border-gray-200">
+            <div className="flex flex-row gap-1.5 sm:gap-2 md:gap-3 h-[380px] sm:h-[500px] md:h-[650px] w-full">
+              
+              {/* Left Column (3 images) */}
+              <div className="flex flex-col gap-1.5 sm:gap-2 md:gap-3 flex-[1]">
                 <div 
-                  key={idx} 
-                  id={`clinic-facility-side-${idx}`}
-                  className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex-1 flex flex-col relative min-h-[220px]"
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(0)}
                 >
-                  <div className="absolute inset-0">
-                    <img 
-                      src={pic.img} 
-                      alt={pic.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-                  </div>
-
-                  {/* Tag overlay */}
-                  <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-10">
-                    {pic.icon}
-                    <span className="text-xs font-bold text-gray-900">{pic.tag}</span>
-                  </div>
-
-                  {/* Bottom text overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10 text-white">
-                    <h3 className="font-extrabold text-lg md:text-xl mb-1 text-white leading-tight">
-                      {pic.title}
-                    </h3>
-                    <p className="text-gray-200 text-xs md:text-sm max-w-md leading-relaxed opacity-90">
-                      {pic.desc}
-                    </p>
-                  </div>
+                  <img src={facilityPics[0].img} alt={facilityPics[0].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
-              ))}
-            </div>
+                <div 
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(1)}
+                >
+                  <img src={facilityPics[1].img} alt={facilityPics[1].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <div 
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(2)}
+                >
+                  <img src={facilityPics[2].img} alt={facilityPics[2].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
+              </div>
 
+              {/* Right Column (4 images) */}
+              <div className="flex flex-col gap-1.5 sm:gap-2 md:gap-3 flex-[1]">
+                <div 
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(3)}
+                >
+                  <img src={facilityPics[3].img} alt={facilityPics[3].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <div 
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(4)}
+                >
+                  <img src={facilityPics[4].img} alt={facilityPics[4].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <div 
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(5)}
+                >
+                  <img src={facilityPics[5].img} alt={facilityPics[5].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <div 
+                  className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
+                  onClick={() => openLightbox(6)}
+                >
+                  <img src={facilityPics[6].img} alt={facilityPics[6].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
@@ -184,6 +228,48 @@ export function Location() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 sm:p-8"
+          onClick={closeLightbox}
+        >
+          <button 
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all focus:outline-none"
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <button 
+            className="absolute left-2 sm:left-6 text-white/70 hover:text-white bg-white/5 hover:bg-white/20 p-3 sm:p-4 rounded-full transition-all focus:outline-none z-10"
+            onClick={prevLightbox}
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+
+          <div 
+            className="relative max-w-5xl w-full max-h-[85vh] flex flex-col items-center justify-center pointer-events-none"
+          >
+            <img 
+              key={lightboxIndex}
+              src={facilityPics[lightboxIndex].img} 
+              alt={facilityPics[lightboxIndex].title} 
+              className="max-w-full max-h-[85vh] object-contain rounded-sm shadow-2xl pointer-events-auto select-none"
+              referrerPolicy="no-referrer"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+
+          <button 
+            className="absolute right-2 sm:right-6 text-white/70 hover:text-white bg-white/5 hover:bg-white/20 p-3 sm:p-4 rounded-full transition-all focus:outline-none z-10"
+            onClick={nextLightbox}
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

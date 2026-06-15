@@ -19,7 +19,7 @@ export function PromoPopup() {
 
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 7000); // 7,000 ms = 7 seconds
+    }, 20000); // 20,000 ms = 20 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -136,7 +136,7 @@ export function PromoPopup() {
 
         <div className="grid md:grid-cols-12">
           {/* Left Side: Image & Highlight banner */}
-          <div className="md:col-span-5 relative bg-emerald-900 min-h-[300px] md:min-h-full flex flex-col justify-end p-6 md:p-8 overflow-hidden">
+          <div className="md:col-span-5 relative bg-gray-900 min-h-[350px] md:min-h-full flex flex-col justify-end p-6 md:p-8 overflow-hidden">
             {/* Promo Image */}
             <img 
               src={getAssetUrl("/pop-up.jpg")} 
@@ -148,31 +148,36 @@ export function PromoPopup() {
               }}
             />
             {/* Dark gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-900/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-900/60 to-transparent"></div>
             
             <div className="relative z-10 mt-auto">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/90 text-white font-extrabold text-[10px] uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500 text-white font-extrabold text-[10px] uppercase tracking-wider mb-4 shadow-lg shadow-rose-500/30 animate-pulse">
                 <Sparkles className="w-3 h-3 text-white" />
-                Limited Slot Left
+                Limited Time Offer
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2 leading-tight drop-shadow-md">
-                ₹34,999
-                <span className="block text-lg font-medium text-emerald-300 mt-1">Special Package</span>
-              </h3>
+              <div className="bg-gradient-to-br from-amber-300 to-yellow-500 text-gray-900 rounded-2xl p-5 mb-5 shadow-2xl transform -rotate-2 relative overflow-hidden ring-4 ring-yellow-500/30">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/40 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/20 rounded-full blur-xl translate-y-1/2 -translate-x-1/4"></div>
+                
+                <span className="block text-xs font-black uppercase tracking-widest text-amber-900/80 mb-1">Flat Rate</span>
+                <h3 className="text-4xl md:text-5xl font-black tracking-tighter leading-none drop-shadow-sm flex items-start">
+                  <span className="text-2xl mt-1 mr-1 font-bold">₹</span>34,999
+                </h3>
+              </div>
               
-              <div className="space-y-2 mt-4 text-xs text-gray-200">
+              <div className="space-y-2.5 text-sm font-medium text-white/90">
                 <div className="flex items-center gap-2 drop-shadow">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Up to 2,500 FUE Grafts</span>
+                  <div className="bg-emerald-500/20 p-1.5 rounded-full"><Check className="w-3 h-3 text-emerald-400 stroke-[3]" /></div>
+                  <span>Up to <strong>2,500 FUE Grafts</strong></span>
                 </div>
                 <div className="flex items-center gap-2 drop-shadow">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>2 Free PRP Sessions</span>
+                  <div className="bg-emerald-500/20 p-1.5 rounded-full"><Check className="w-3 h-3 text-emerald-400 stroke-[3]" /></div>
+                  <span><strong>2 Free PRP</strong> Sessions Included</span>
                 </div>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-white/20">
+              <div className="mt-5 pt-4 border-t border-white/10">
                 <div className="flex items-center gap-2 text-rose-300 font-bold text-xs uppercase tracking-wide">
                   <Flame className="w-4 h-4 fill-current animate-bounce" />
                   <span>Reserved for next 15 patients</span>

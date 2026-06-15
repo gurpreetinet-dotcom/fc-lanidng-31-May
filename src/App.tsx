@@ -18,7 +18,7 @@ import { FAQ } from './components/FAQ';
 import { Location } from './components/Location';
 import { Footer } from './components/Footer';
 import { FloatingContact } from './components/FloatingContact';
-import { PromoPopup } from './components/PromoPopup';
+// import { PromoPopup } from './components/PromoPopup';
 
 export default function App() {
   return (
@@ -40,7 +40,7 @@ export default function App() {
       </main>
       <Footer />
       <FloatingContact />
-      <PromoPopup />
+      {/* <PromoPopup /> */}
       
       {/* Floating CTA for mobile */}
       <div className="fixed bottom-0 left-0 right-0 p-4 md:hidden z-50 bg-white/80 backdrop-blur-md border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">

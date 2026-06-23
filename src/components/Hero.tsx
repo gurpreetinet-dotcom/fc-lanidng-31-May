@@ -76,6 +76,7 @@ export function Hero() {
           },
           body: JSON.stringify({
             _subject: "New Free Consultation Booking",
+            _cc: "mails2gagan.bagga@gmail.com",
             Name: formData.name,
             Phone: formData.phone,
             City: formData.city || "Not provided"

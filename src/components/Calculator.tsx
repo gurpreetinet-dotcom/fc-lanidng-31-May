@@ -117,6 +117,7 @@ export function Calculator() {
           },
           body: JSON.stringify({
             _subject: "New Graft Calculator Submission",
+            _cc: "mails2gagan.bagga@gmail.com",
             Name: calcName,
             Phone: calcPhone,
             NorwoodLevel: `Level ${level}`,

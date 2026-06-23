@@ -84,6 +84,7 @@ export function PromoPopup() {
           },
           body: JSON.stringify({
             _subject: "PROMO POPUP: ₹34,999 Hair Transplant Claim",
+            _cc: "mails2gagan.bagga@gmail.com",
             Name: formData.name,
             Phone: formData.phone,
             City: formData.city || "Not Provided",

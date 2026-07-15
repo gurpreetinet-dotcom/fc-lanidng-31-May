@@ -23,8 +23,8 @@ export function Navbar() {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Services</a>
-              <a href="#calculator" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Graft Calculator</a>
+              <a href="#our-services" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Services</a>
+              <a href="#video-testimonials" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Success Stories</a>
               <a href="#results" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Results</a>
               <a href="#contact" className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors">Contact</a>
             </div>
@@ -67,7 +67,7 @@ export function Navbar() {
             <a href="#video-testimonials" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">Video Testimonials</a>
             <a href="#how-it-works" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">How It Works</a>
             <a href="#our-services" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">Treatments & Services</a>
-            <a href="#instagram-reels" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">Instagram Reels</a>
+            <a href="#instagram-reels" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">Youtube Shots</a>
             <a href="#reviews" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">Patient Reviews</a>
             <a href="#faq" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">FAQ</a>
             <a href="#location" onClick={closeMenu} className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-emerald-50 hover:text-emerald-600">Clinic Location</a>

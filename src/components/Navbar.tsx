@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex-shrink-0 flex items-center gap-2">
-              <img src={logoPng} alt="First Choice" className="h-10 object-contain" />
+              <img src={logoPng} alt="First Choice Hair Transplant Ludhiana Logo" className="h-10 object-contain" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-gray-900 leading-tight">First Choice</span>
                 <span className="text-xs text-emerald-600 font-semibold tracking-wider uppercase">Hair Transplant & Cosmetics</span>

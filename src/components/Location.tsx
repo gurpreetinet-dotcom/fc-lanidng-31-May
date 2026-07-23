@@ -102,21 +102,21 @@ export function Location() {
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(0)}
                 >
-                  <img src={facilityPics[0].img} alt={facilityPics[0].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[0].img} alt={`${facilityPics[0].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
                 <div 
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(1)}
                 >
-                  <img src={facilityPics[1].img} alt={facilityPics[1].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[1].img} alt={`${facilityPics[1].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
                 <div 
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(2)}
                 >
-                  <img src={facilityPics[2].img} alt={facilityPics[2].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[2].img} alt={`${facilityPics[2].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
               </div>
@@ -127,28 +127,28 @@ export function Location() {
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(3)}
                 >
-                  <img src={facilityPics[3].img} alt={facilityPics[3].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[3].img} alt={`${facilityPics[3].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
                 <div 
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(4)}
                 >
-                  <img src={facilityPics[4].img} alt={facilityPics[4].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[4].img} alt={`${facilityPics[4].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
                 <div 
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(5)}
                 >
-                  <img src={facilityPics[5].img} alt={facilityPics[5].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[5].img} alt={`${facilityPics[5].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
                 <div 
                   className="flex-[1] overflow-hidden rounded-sm cursor-pointer group relative"
                   onClick={() => openLightbox(6)}
                 >
-                  <img src={facilityPics[6].img} alt={facilityPics[6].title} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={facilityPics[6].img} alt={`${facilityPics[6].title} - Best Hair Transplant Clinic in Ludhiana`} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
               </div>
@@ -255,7 +255,7 @@ export function Location() {
             <img 
               key={lightboxIndex}
               src={facilityPics[lightboxIndex].img} 
-              alt={facilityPics[lightboxIndex].title} 
+              alt={`${facilityPics[lightboxIndex].title} - Best Hair Transplant Clinic in Ludhiana`} 
               className="max-w-full max-h-[85vh] object-contain rounded-sm shadow-2xl pointer-events-auto select-none"
               referrerPolicy="no-referrer"
               onClick={(e) => e.stopPropagation()}

@@ -41,7 +41,7 @@ export function Services() {
               <div className="w-full aspect-[4/5] rounded-xl overflow-hidden mb-3 sm:mb-5 relative bg-emerald-50">
                 <img 
                   src={service.image} 
-                  alt={service.title} 
+                  alt={`${service.title} - Hair Transplant in Ludhiana`} 
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

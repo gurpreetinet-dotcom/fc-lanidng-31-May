@@ -107,18 +107,18 @@ export function Hero() {
           
           {/* Text Content */}
           <div className="max-w-2xl relative">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-semibold mb-3">
+            <h1 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-semibold mb-3">
               <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></div>
               #1 Hair Transplant Clinic in Ludhiana
-            </div>
+            </h1>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 tracking-tight min-h-[100px] md:min-h-[144px]">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 tracking-tight min-h-[100px] md:min-h-[144px]">
               Regain Your Hair, <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-indigo-600">
                 {displayedText}
               </span>
               <span className="animate-pulse border-r-4 border-emerald-600 ml-1 inline-block h-[0.8em]"></span>
-            </h1>
+            </h2>
             
             <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed">
               Experience world-class hair restoration with advanced FUE and IHT technology.
@@ -136,7 +136,7 @@ export function Hero() {
               {/* Before Polaroid */}
               <div className="bg-white p-2 pb-6 sm:p-3 sm:pb-9 rounded shadow-[0_8px_20px_rgba(0,0,0,0.08)] transform -rotate-2 lg:-rotate-6 border border-gray-100 w-[47%] max-w-[220px] sm:w-64 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 lg:absolute lg:top-0 lg:left-[50px] xl:left-[30px] pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:origin-bottom-right">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
-                  <img src={getAssetUrl("/hero-before.jpg")} alt="Before" className="w-full h-full object-cover object-top" />
+                  <img src={getAssetUrl("/hero-before.jpg")} alt="Hair Transplant in Ludhiana Before" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-medium italic text-gray-500 text-xs sm:text-[13px] xl:text-[15px]">Before</div>
               </div>
@@ -164,7 +164,7 @@ export function Hero() {
               {/* After Polaroid */}
               <div className="bg-white p-2 pb-6 sm:p-3 sm:pb-9 rounded shadow-[0_12px_25px_rgba(0,0,0,0.12)] transform rotate-2 lg:rotate-6 border border-gray-100 w-[47%] max-w-[220px] sm:w-64 lg:w-32 xl:w-44 xl:p-3 xl:pb-10 relative z-10 pointer-events-auto transition-transform hover:rotate-0 hover:z-30 lg:absolute lg:top-[250px] lg:-left-[20px] xl:top-[290px] xl:left-[20px] lg:origin-top-left">
                 <div className="aspect-[4/5] w-full overflow-hidden bg-gray-100">
-                  <img src={getAssetUrl("/hero-after.jpg")} alt="After" className="w-full h-full object-cover object-top" />
+                  <img src={getAssetUrl("/hero-after.jpg")} alt="Hair Transplant in Ludhiana After" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute bottom-1.5 xl:bottom-2 left-0 right-0 text-center font-bold italic text-emerald-600 text-xs sm:text-[13px] xl:text-[15px]">After</div>
               </div>
@@ -185,10 +185,10 @@ export function Hero() {
                 
                 <div className="flex items-center gap-3 pl-2 pr-5 py-1.5 rounded-full border border-emerald-100 bg-emerald-50/30 text-gray-900 shadow-sm overflow-hidden">
                   <div className="flex -space-x-4">
-                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/monu-2.jpg")} alt="Patient Monu Results" />
-                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/mani-1.jpg")} alt="Patient Mani Results" />
-                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/vipul-1.jpg")} alt="Patient Vipul Results" />
-                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/darshan-3.jpg")} alt="Patient Darshan Results" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/monu-2.jpg")} alt="Best Hair Transplant Results Ludhiana" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/mani-1.jpg")} alt="FUE Hair Transplant Patient" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/vipul-1.jpg")} alt="Hair Transplant Doctor Patient" />
+                    <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white object-cover object-top" src={getAssetUrl("/darshan-3.jpg")} alt="Hair Transplant in Punjab Results" />
                   </div>
                   <span className="text-base md:text-lg font-extrabold text-emerald-800 tracking-tight">2000+ Transplants Done</span>
                 </div>

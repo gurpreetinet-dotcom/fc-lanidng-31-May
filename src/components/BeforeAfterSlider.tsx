@@ -8,17 +8,17 @@ const slides = [
   {
     id: 1,
     image: beforeAfter1,
-    alt: "Patient 1 Before and After"
+    alt: "Hair Transplant Before and After Ludhiana"
   },
   {
     id: 2,
     image: beforeAfter2,
-    alt: "Patient 2 Before and After"
+    alt: "FUE Hair Transplant Results"
   },
   {
     id: 3,
     image: beforeAfter3,
-    alt: "Patient 3 Before and After"
+    alt: "Best Hair Transplant Doctor Results"
   }
 ];
 

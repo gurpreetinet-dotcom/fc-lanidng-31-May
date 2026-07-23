@@ -195,7 +195,7 @@ export function GoogleReviews() {
                           <div key={imgIdx} className="rounded-xl overflow-hidden relative border border-gray-100 bg-gray-50 h-24 w-24 flex-shrink-0">
                             <img 
                               src={getAssetUrl(img)} 
-                              alt={`Review photo by ${review.name}`} 
+                              alt={`Hair Transplant Results by ${review.name}`} 
                               className="w-full h-full object-cover object-top"
                             />
                           </div>

@@ -10,7 +10,7 @@ export function Surgeon() {
              <div className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-white shadow-xl relative bg-white flex-shrink-0">
                <img 
                  src={getAssetUrl("/dr-jatin-goyal.png")} 
-                 alt="Dr. Jatin - Hair Transplant Surgeon" 
+                 alt="Dr. Jatin - Best Hair Transplant Surgeon in Ludhiana" 
                  className="w-full h-full object-cover" 
                  onError={(e) => {
                     const target = e.target as HTMLImageElement;

@@ -9,7 +9,7 @@ export function Footer() {
           
           <div className="lg:col-span-1">
             <div className="flex-shrink-0 flex items-center gap-2 mb-6">
-              <img src={logoPng} alt="First Choice" className="h-10 object-contain brightness-0 invert" />
+              <img src={logoPng} alt="First Choice Hair Transplant Ludhiana Logo" className="h-10 object-contain brightness-0 invert" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-white leading-tight">First Choice</span>
                 <span className="text-xs text-emerald-400 font-semibold tracking-wider uppercase">Hair Transplant & Cosmetics</span>

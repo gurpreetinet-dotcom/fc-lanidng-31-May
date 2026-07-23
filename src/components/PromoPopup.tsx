@@ -141,7 +141,7 @@ export function PromoPopup() {
             {/* Promo Image */}
             <img 
               src={getAssetUrl("/pop-up.jpg")} 
-              alt="Hair Transplant Offer" 
+              alt="Best Hair Transplant Offer in Ludhiana" 
               className="absolute inset-0 w-full h-full object-cover"
               onError={(e) => {
                 // Fallback to a placeholder if the user hasn't uploaded popup-promo.jpg yet
